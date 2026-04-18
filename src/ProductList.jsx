@@ -18,12 +18,10 @@ function ProductList({ onHomeClick }) {
     const calculateTotalQuantity = () => {
         return cartItems ? cartItems.reduce((total, item) => total + item.quantity, 0) : 0;
     };
-// Track which plants are added to cart
-const [addedPlants, setAddedPlants] = useState({});
 
 // Check if plant is already in cart
 const isPlantAdded = (plantName) => {
-    return addedPlants[plantName] || cartItems.some(item => item.name === plantName);
+    return cartItems.some(item => item.name === plantName);
 };
     const plantsArray = [
         {
@@ -284,12 +282,7 @@ const handleAddToCart = (product) => {
             image: product.image,
             cost: product.cost
         }));
-        
-        // Mark this plant as added
-        setAddedPlants(prev => ({
-            ...prev,
-            [product.name]: true
-        }));
+       
     };
 
   
