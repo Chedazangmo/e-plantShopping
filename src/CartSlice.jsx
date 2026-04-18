@@ -33,6 +33,9 @@ export const CartSlice = createSlice({
     },
   },
 });
+export const selectIsInCart = (state, plantName) => {
+  return state.cart.items.some(item => item.name === plantName);
+};
 
 export const { addItem, removeItem, updateQuantity } = CartSlice.actions;
 

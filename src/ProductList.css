@@ -1,7 +1,8 @@
 /* Reset some default styles */
-body, h1, ul {
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 /* Set a background color */
@@ -19,13 +20,15 @@ body {
     justify-content: space-between;
     align-items: center;
     font-size: 20px;
+    flex-wrap: wrap;
 }
 
 .navbar .ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 1100px;
+    width: auto;
+    gap: 30px;
 }
 
 .navbar li {
@@ -36,217 +39,422 @@ body {
     color: white;
     font-size: 30px;
     text-decoration: none;
-   
 }
 
-/* Product Grid */
-.product-grid {
-    display:flex;
-    flex-direction: column;
-    width: 100vw;
-    align-items: center;
-    justify-content: center;
-}
-.product-list {
+.tag_home_link {
     display: flex;
-    flex-wrap: wrap;
-    gap: 50px;
-    /* background-color: pink; */
-    /* justify-content: space-between; */
-    padding: 20px;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Product Card */
-.product-card {
-    flex: 0 0 calc(33.33% - 20px); /* Adjust width for 3 cards per row with 20px gap */
-    max-width: calc(26.33% - 20px); /* Adjust max-width for 3 cards per row with 20px gap */
-    margin-bottom: 20px;
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    text-align: center;
-    position: relative;
-    
-    gap: 20px;
-}
-
-/* Pseudo-classes - Hover effect on product button */
-.product-card:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease-in-out;
-    z-index: 1;
-}
-
-.product-title {
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.product-price {
-    color: #e74c3c;
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-}
-
-.product-image {
-    max-width: 100%;
-    height: 200px; /* Adjust height for better consistency */
-}
-
-.product-button {
-    background-color: #e74c3c;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-    margin-top: 10px;
-}
-
-.product-button:hover {
-    background-color: #c0392b;
-}
-
-/* Pseudo-elements - Sale badge */
-.product-card::before {
-    content: "SALE";
-    background-color: #e74c3c;
-    color: #fff;
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 5px 10px;
-    border-radius: 0 0 0 5px;
-}
-.tag_home_link{
-    display: flex;
-    /* background-color: red; */
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-left: 50px;
+    margin-left: 20px;
     color: white;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 16px;
 }
-.tag_home_link h3{
-    font-size: 30px;
+
+.tag_home_link h3 {
+    font-size: 24px;
+    margin: 0;
 }
-.tag a{
+
+.tag a {
     text-decoration: none;
 }
+
 .tag {
-    width: 400px;
+    width: auto;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 10px;
 }
 
 .tag img {
-    height: 70px;
-    width: 70px;
-    border-radius: 70%;
-    
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
 }
 
 .luxury {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 650px;
-    font-size: 19px;
+    gap: 15px;
+    font-size: 16px;
 }
-.cart{
+
+.cart {
     color: white;
     display: flex;
+    position: relative;
 }
-.cart_quantity_count{
-    margin-top: 16px;
-    /* background-color: red; */
-    margin-left: 27px;
-    position: absolute;
-    font-size: 29px;
 
+.cart_quantity_count {
+    margin-top: -5px;
+    margin-left: 20px;
+    position: absolute;
+    font-size: 20px;
+    background-color: #ff6b6b;
+    border-radius: 50%;
+    padding: 2px 6px;
+    min-width: 20px;
+    text-align: center;
 }
-.plantname_heading{
-   display: flex;
-   align-items: center;
-   justify-content: center;
-    /* background-color: yellow; */
+
+/* Product Grid Container */
+.product-grid {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
-.plant_heading{
+
+/* Plants Grid - 3 columns by default */
+.plants-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+}
+
+/* Category Section */
+.category-section {
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.category-title {
+    font-size: clamp(20px, 4vw, 28px);
+    color: #333;
+    margin-bottom: 20px;
+    padding-left: 10px;
+    border-left: 4px solid #4caf50;
+}
+
+/* Plant Card */
+.plant-card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    padding: 15px;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.plant-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Sale Badge */
+.plant-card::before {
+    content: "SALE";
+    background-color: #e74c3c;
+    color: #fff;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: bold;
+    z-index: 1;
+}
+
+/* Plant Image */
+.plant-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Plant Info */
+.plant-info {
+    padding: 10px 0;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Plant Name */
+.plant-name {
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 18px;
+    color: #333;
+}
+
+/* Plant Description */
+.plant-description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+/* Plant Cost */
+.plant-cost {
+    color: #4CAF50;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+/* Add to Cart Button */
+.add-to-cart-btn {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #45a049;
+}
+
+.add-to-cart-btn.added-to-cart {
+    background-color: grey;
+}
+
+/* Plant Heading */
+.plantname_heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.plant_heading {
     width: 400px;
     text-align: center;
     margin: 20px;
     border: 1px solid rgb(5, 4, 4);
     border-left: none;
     border-right: none;
-
-    
 }
-/* Add Media Query for responsiveness */
+
+/* ======================================== */
+/* RESPONSIVE DESIGN */
+/* ======================================== */
+
+/* Large Desktop - 4 columns */
+@media (min-width: 1400px) {
+    .plants-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 25px;
+    }
+    
+    .plant-image {
+        height: 180px;
+    }
+}
+
+/* Desktop - 3 columns (default) */
+@media (max-width: 1200px) {
+    .plants-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+}
+
+/* Tablet - 2 columns */
+@media (max-width: 992px) {
+    .plants-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .plant-image {
+        height: 140px;
+    }
+    
+    .plant-name {
+        font-size: 16px;
+    }
+}
+
+/* Mobile Landscape - 2 columns */
 @media (max-width: 768px) {
-    .product-card {
-        flex: 1 1 calc(50% - 20px); /* Adjust width for 2 cards per row with 20px gap on smaller screens */
-        max-width: calc(50% - 20px); /* Adjust max-width for 2 cards per row with 20px gap on smaller screens */
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .tag {
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    
+    .ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+    
+    .ul div {
+        text-align: center;
+    }
+    
+    .luxury {
+        flex-direction: column;
+        width: auto;
+    }
+    
+    .tag img {
+        height: 40px;
+        width: 40px;
+    }
+    
+    .tag_home_link h3 {
+        font-size: 20px;
+    }
+    
+    .plants-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        padding: 15px;
+    }
+    
+    .plant-card {
+        padding: 10px;
+    }
+    
+    .plant-image {
+        height: 120px;
+    }
+    
+    .plant-name {
+        font-size: 14px;
+    }
+    
+    .plant-cost {
+        font-size: 14px;
+    }
+    
+    .plant-description {
+        font-size: 12px;
+    }
+    
+    .add-to-cart-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+    
+    .product-grid {
+        padding: 15px;
     }
 }
-/* ProductList.css */
 
-.product-button {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-  }
-  
-  .product-button:hover {
-    background-color: #45a049;
-  }
-  
-  .product-button.added-to-cart {
-    background-color: grey; /* Grey when product is added */
-  }
-  @media (max-width: 1200px) {
-    .product-card {
-      flex: 1 1 calc(33.33% - 20px); /* Adjust width for 3 cards per row with 20px gap on medium screens */
-      max-width: calc(33.33% - 20px); /* Adjust max-width for 3 cards per row with 20px gap on medium screens */
+/* Mobile Portrait - 1 column */
+@media (max-width: 480px) {
+    .plants-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
     }
-  }
-  
-  @media (max-width: 768px) {
-    .product-card {
-      flex: 1 1 calc(50% - 20px); /* Adjust width for 2 cards per row with 20px gap on small screens */
-      max-width: calc(50% - 20px); /* Adjust max-width for 2 cards per row with 20px gap on small screens */
+    
+    .plant-image {
+        height: 180px;
     }
+    
+    .plant-card {
+        max-width: 100%;
+        margin: 0 auto;
+        width: 100%;
+    }
+    
+    .product-grid {
+        padding: 10px;
+    }
+    
+    .category-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    
+    .plant-name {
+        font-size: 16px;
+    }
+    
+    .plant-description {
+        font-size: 13px;
+    }
+    
+    .plant-cost {
+        font-size: 16px;
+    }
+    
+    .add-to-cart-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+/* Very Small Mobile */
+@media (max-width: 320px) {
+    .plant-image {
+        height: 150px;
+    }
+    
+    .plant-name {
+        font-size: 14px;
+    }
+    
+    .plant-description {
+        font-size: 11px;
+    }
+}
+
+/* Landscape orientation for mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .plants-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .plant-image {
+        height: 130px;
+    }
+    
     .navbar {
-        flex-direction: column; /* Change flex direction to stack items vertically */
-        align-items: center; /* Align items to the center of the container */
-      }
+        padding: 10px;
+    }
     
-      .tag {
-        margin-bottom: 20px; /* Add margin bottom for spacing */
-        text-align: center; /* Align text to the center */
-      }
-    
-      .ul {
-        display: flex; /* Set display to flex */
-        flex-direction: column; /* Change flex direction to stack items vertically */
-        gap: 10px; /* Add gap between items */
-      }
-    
-      .ul div {
-        text-align: center; /* Align text to the center */
-      }
-  }
+    .cart svg {
+        height: 40px;
+        width: 40px;
+    }
+}
+/* Add this to your ProductList.css */
+
+.add-to-cart-btn.added-to-cart {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.add-to-cart-btn.added-to-cart:hover {
+    background-color: #cccccc;
+    transform: none;
+}
+
+.add-to-cart-btn:disabled {
+    cursor: not-allowed;
+}

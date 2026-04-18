@@ -7,20 +7,15 @@ const CartItem = ({ onContinueShopping }) => {
   const cart = useSelector(state => state.cart.items);
   const dispatch = useDispatch();
 
-  // Calculate total amount for all products in the cart
+  // Calculate total amount for all products in the cart - FIXED
   const calculateTotalAmount = () => {
-    let total=0;
-    cart.forEach(item=>{
-     let total=0;
-     cart.forEach(item =>{
-        const quantity=item.quantity;
-        const cost = parseFloat(item.cost.substring(1));
-        total +=cost*quantity;
-
-     });
-     return total;
-    })
- 
+    let total = 0;
+    cart.forEach(item => {
+      const quantity = item.quantity;
+      const cost = parseFloat(item.cost.substring(1));
+      total += cost * quantity;
+    });
+    return total.toFixed(2);
   };
 
   const handleContinueShopping = (e) => {
@@ -28,16 +23,18 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const handleIncrement = (item) => {
-    const newQuantity=item.quantity +1;
-    dispatch(updateQuantity({name:item.name,quantity:newQuantity}))
-     };
+    const newQuantity = item.quantity + 1;
+    dispatch(updateQuantity({ name: item.name, quantity: newQuantity }));
+  };
 
   const handleDecrement = (item) => {
-    if(item.quantity>1){
-        const newQuantity=item.quantity -1;
+    if (item.quantity > 1) {
+      const newQuantity = item.quantity - 1;
+      dispatch(updateQuantity({ name: item.name, quantity: newQuantity }));
+    } else {
+      // If quantity is 1, remove the item
+      dispatch(removeItem(item.name));
     }
-    dispatch(updateQuantity({name: item.name,quantity:newQuantity}));
-
   };
 
   const handleRemove = (item) => {
@@ -46,14 +43,14 @@ const CartItem = ({ onContinueShopping }) => {
 
   // Calculate total cost based on quantity for an item
   const calculateTotalCost = (item) => {
-    const cost =parseFloat(item.cost.substring(1));
-    return (cost * item.quantity);
+    const cost = parseFloat(item.cost.substring(1));
+    return (cost * item.quantity).toFixed(2);
   };
 
   return (
     <div className="cart-container">
       <h2 style={{ color: 'black' }}>Total Cart Amount: ${calculateTotalAmount()}</h2>
-      <div>
+      <div className="cart-items-grid">
         {cart.map(item => (
           <div className="cart-item" key={item.name}>
             <img className="cart-item-image" src={item.image} alt={item.name} />
@@ -82,5 +79,3 @@ const CartItem = ({ onContinueShopping }) => {
 };
 
 export default CartItem;
-
-
